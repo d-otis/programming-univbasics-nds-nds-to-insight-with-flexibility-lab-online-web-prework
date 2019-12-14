@@ -128,7 +128,7 @@ def movies_with_directors_set(source)
     while m < source[d][:movies].length
       inner_hash = {}
       inner_hash[:director_name] = source[d][:name] #returns director_name
-      inner_hash[:title] = source[d][:movies][m]
+      inner_hash[:title] = source[d][:movies][m][:title]
       final_array << inner_hash
       # binding.pry
       m += 1
