@@ -115,9 +115,27 @@ def movies_with_directors_set(source)
   #
   # Array of Arrays containing all of a director's movies. Each movie will need
   # to have a :director_name key added to it.
+  # { :name => "A", :movies => [{ :title => "Test" }] }
+  # becomes... [
+                  # [{:title => "Test", :director_name => "A"}],
+                  # ...[],
+                  # ... []]
   
-  binding.pry
-  
+  final_array = []
+  d = 0
+  while d < source.length do
+    m = 0
+    while m < source[d][:movies].length
+      inner_hash = {}
+      inner_hash[:director_name] = source[d][:name] #returns director_name
+      inner_hash[:title] = source[d][:movies][m]
+      final_array << inner_hash
+      # binding.pry
+      m += 1
+    end
+    d += 1
+  end
+  final_array
 end
 
 # ----------------    End of Your Code Region --------------------
