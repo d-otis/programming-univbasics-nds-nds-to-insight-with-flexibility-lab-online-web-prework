@@ -73,17 +73,14 @@ def gross_per_studio(collection)
   all_studio_hash = {}
   m = 0
   while m < collection.length do
-    # if studio hasn't been used yet make a new listing
-    # otherwise add the worldwide_gross of the film to the previous total
-    if !all_studio_hash[collection[:studio]]
-      all_studio_hash[collection[:studio]] = collection[:worldwide_gross]
+    if !all_studio_hash[collection[m][:studio]]
+      all_studio_hash[collection[m][:studio]] = collection[m][:worldwide_gross]
     else
-      all_studio_hash[collection[:studio]] += collection[:worldwide_gross]
+      all_studio_hash[collection[m][:studio]] += collection[m][:worldwide_gross]
     end
     m += 1
   end
   all_studio_hash
-  binding.pry
 end
 
 def movies_with_directors_set(source)
