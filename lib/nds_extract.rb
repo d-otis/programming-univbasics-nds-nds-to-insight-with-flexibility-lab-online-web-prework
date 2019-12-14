@@ -89,11 +89,35 @@ def movies_with_directors_set(source)
   # INPUT:
   # * source: An Array of Hashes containing director information including
   # :name and :movies
+  [
+    {
+      :name=>"Byron Poodle",
+      :movies=>
+      [
+        {
+          :title=>"At the park"
+        }, 
+        {
+          :title=>"On the couch"
+        }
+      ]
+    },
+    {
+      :name=>"Nancy Drew",
+      :movies=>
+        [
+          {:title=>"Biting"}
+        ]
+    }
+  ]
   #
   # RETURN:
   #
   # Array of Arrays containing all of a director's movies. Each movie will need
   # to have a :director_name key added to it.
+  
+  binding.pry
+  
 end
 
 # ----------------    End of Your Code Region --------------------
