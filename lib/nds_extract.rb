@@ -54,7 +54,6 @@ def movies_with_director_key(name, movies_collection)
     movies_collection[i][:director_name] = name
     i += 1
   end
-  # binding.pry
   movies_collection
 end
 
@@ -71,7 +70,6 @@ def gross_per_studio(collection)
   #
   # Hash whose keys are the studio names and whose values are the sum
   # total of all the worldwide_gross numbers for every movie in the input Hash
-  # binding.pry
   all_studio_hash = {}
   m = 0
   while m < collection.length do
@@ -82,10 +80,10 @@ def gross_per_studio(collection)
     else
       all_studio_hash[collection[:studio]] += collection[:worldwide_gross]
     end
-    binding.pry
     m += 1
   end
   all_studio_hash
+  binding.pry
 end
 
 def movies_with_directors_set(source)
