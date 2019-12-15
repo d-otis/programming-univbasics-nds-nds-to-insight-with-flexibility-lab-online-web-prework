@@ -80,6 +80,7 @@ def gross_per_studio(collection)
     end
     m += 1
   end
+  # binding.pry
   all_studio_hash
 end
 
@@ -89,27 +90,27 @@ def movies_with_directors_set(source)
   # INPUT:
   # * source: An Array of Hashes containing director information including
   # :name and :movies
-  [
-    {
-      :name=>"Byron Poodle",
-      :movies=>
-      [
-        {
-          :title=>"At the park"
-        }, 
-        {
-          :title=>"On the couch"
-        }
-      ]
-    },
-    {
-      :name=>"Nancy Drew",
-      :movies=>
-        [
-          {:title=>"Biting"}
-        ]
-    }
-  ]
+  # [
+  #   {
+  #     :name=>"Byron Poodle",
+  #     :movies=>
+  #     [
+  #       {
+  #         :title=>"At the park"
+  #       }, 
+  #       {
+  #         :title=>"On the couch"
+  #       }
+  #     ]
+  #   },
+  #   {
+  #     :name=>"Nancy Drew",
+  #     :movies=>
+  #       [
+  #         {:title=>"Biting"}
+  #       ]
+  #   }
+  # ]
   #
   # RETURN:
   #
@@ -121,21 +122,24 @@ def movies_with_directors_set(source)
                   # ...[],
                   # ... []]
   
-  final_array = []
+  results = []
   d = 0
   while d < source.length do
     m = 0
     while m < source[d][:movies].length
       inner_hash = {}
-      inner_hash[:director_name] = source[d][:name] #returns director_name
+      inner_array = []
       inner_hash[:title] = source[d][:movies][m][:title]
-      final_array << inner_hash
+      inner_hash[:director_name] = source[d][:name]
+      inner_array << inner_hash
+      results << inner_array
       # binding.pry
       m += 1
     end
     d += 1
   end
-  final_array
+  # binding.pry
+  results
 end
 
 # ----------------    End of Your Code Region --------------------
@@ -143,7 +147,9 @@ end
 # call code. You'll have to "see-saw" to get this to work!
 
 def studios_totals(nds)
-  a_o_a_movies_with_director_names = movies_with_directors_set(nds)
-  movies_with_director_names = flatten_a_o_a(a_o_a_movies_with_director_names)
-  return gross_per_studio(movies_with_director_names)
+  a_o_a_movies_with_director_names = movies_with_directors_set(nds) #returns [ [{:title => "Test", :director_name => "A"}], [] ]
+  movies_with_director_names = flatten_a_o_a(a_o_a_movies_with_director_names) #[[1,2],[3,4,5], [6]] => [1,2,3,4,5,6]
+  binding.pry
+  return gross_per_studio(movies_with_director_names) 
+  # binding.pry
 end
